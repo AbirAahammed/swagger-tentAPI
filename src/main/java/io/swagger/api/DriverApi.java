@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:12:24.446-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:30:43.620-05:00")
 
 @Api(value = "driver", description = "the driver API")
 public interface DriverApi {
@@ -31,6 +31,7 @@ public interface DriverApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Driver.class) })
     @RequestMapping(value = "/driver/{driverID}",
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Driver> driverDriverIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("driverID") Integer driverID);
 

@@ -22,7 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:12:24.446-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:30:43.620-05:00")
 
 @Api(value = "company", description = "the company API")
 public interface CompanyApi {
@@ -31,6 +31,7 @@ public interface CompanyApi {
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Company.class) })
     @RequestMapping(value = "/company/{companyID}",
+        produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Company> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID);
 

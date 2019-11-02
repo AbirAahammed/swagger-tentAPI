@@ -42,7 +42,7 @@ public class CompanyApiController implements CompanyApi {
     public ResponseEntity<Company> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-           return new ResponseEntity<>(Company_PE.getCompanyByID(companyID), HttpStatus.OK);
+            return new ResponseEntity<>(Company_PE.getCompanyByID(companyID), HttpStatus.OK);
         }
 
         return new ResponseEntity<Company>(HttpStatus.NOT_IMPLEMENTED);
