@@ -1,0 +1,84 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Tent API
+  description: This is an API for TEnt application.
+host: tent.api.com
+basePath: /tent
+schemes:
+  - "https"
+  - "http"
+paths:
+  /driver:
+    get:
+      summary: Get all the drivers
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: get all the drivers on successful execution
+          schema:
+            $ref: "#/definitions/drivers"
+  /driver/{driverID}:
+    get:
+      summary: Get a driver by ID
+      parameters:
+        - in: path
+          name: driverID
+          type: integer
+          required: true
+          description: Numeric ID of the user to get
+      description: Numeric ID of Driver
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/driver"
+
+  /company:
+    get:
+      summary: say Hi
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: get all the companies on successful execution
+          schema:
+            $ref: "#/definitions/API"
+  /company/{companyID}:
+    get:
+      summary: Get a company by its ID
+      parameters:
+        - in: path
+          name: companyID
+          type: integer
+          required: true
+          description: Numeric ID of the user to get
+      description: Numeric ID of Driver
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: "#/definitions/API"
+definitions:
+  API:
+    type: "object"
+    properties:
+      message:
+        type: "object"
+  driver:
+    type: object
+    properties:
+      driverID:
+        type: integer
+      firstName:
+        type: string
+      lastName:
+        type: string
+      middleName:
+        type: string
+  drivers:
+    type: array
+    items:
+      $ref: "#/definitions/driver"
+      
