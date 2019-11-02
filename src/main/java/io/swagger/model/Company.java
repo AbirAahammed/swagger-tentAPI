@@ -10,33 +10,56 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * API
+ * Company
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:12:24.446-05:00")
 
-public class API   {
-  @JsonProperty("message")
-  private Object message = null;
+public class Company   {
+  @JsonProperty("companyID")
+  private Integer companyID = null;
 
-  public API message(Object message) {
-    this.message = message;
+  @JsonProperty("companyName")
+  private String companyName = null;
+
+  public Company companyID(Integer companyID) {
+    this.companyID = companyID;
     return this;
   }
 
   /**
-   * Get message
-   * @return message
+   * Get companyID
+   * @return companyID
   **/
   @ApiModelProperty(value = "")
 
 
-  public Object getMessage() {
-    return message;
+  public Integer getCompanyID() {
+    return companyID;
   }
 
-  public void setMessage(Object message) {
-    this.message = message;
+  public void setCompanyID(Integer companyID) {
+    this.companyID = companyID;
+  }
+
+  public Company companyName(String companyName) {
+    this.companyName = companyName;
+    return this;
+  }
+
+  /**
+   * Get companyName
+   * @return companyName
+  **/
+  @ApiModelProperty(value = "")
+
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
   }
 
 
@@ -48,21 +71,23 @@ public class API   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    API API = (API) o;
-    return Objects.equals(this.message, API.message);
+    Company company = (Company) o;
+    return Objects.equals(this.companyID, company.companyID) &&
+        Objects.equals(this.companyName, company.companyName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message);
+    return Objects.hash(companyID, companyName);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class API {\n");
+    sb.append("class Company {\n");
     
-    sb.append("    message: ").append(toIndentedString(message)).append("\n");
+    sb.append("    companyID: ").append(toIndentedString(companyID)).append("\n");
+    sb.append("    companyName: ").append(toIndentedString(companyName)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -22,6 +22,8 @@ paths:
   /driver/{driverID}:
     get:
       summary: Get a driver by ID
+      produces:
+        - "application/json"
       parameters:
         - in: path
           name: driverID
@@ -44,10 +46,12 @@ paths:
         200:
           description: get all the companies on successful execution
           schema:
-            $ref: "#/definitions/API"
+            $ref: '#/definitions/companies'
   /company/{companyID}:
     get:
       summary: Get a company by its ID
+      produces:
+        - "application/json"
       parameters:
         - in: path
           name: companyID
@@ -59,7 +63,7 @@ paths:
         200:
           description: OK
           schema:
-            $ref: "#/definitions/API"
+            $ref: '#/definitions/company'
 definitions:
   API:
     type: "object"
@@ -81,4 +85,14 @@ definitions:
     type: array
     items:
       $ref: "#/definitions/driver"
-      
+  company:
+    type: object
+    properties:
+      companyID:
+        type: integer
+      companyName:
+        type: string
+  companies:
+    type: array
+    items:
+      $ref: '#/definitions/company'

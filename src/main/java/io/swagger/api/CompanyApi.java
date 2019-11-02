@@ -5,7 +5,8 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.API;
+import io.swagger.model.Companies;
+import io.swagger.model.Company;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,25 +22,25 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T11:47:34.041-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:12:24.446-05:00")
 
 @Api(value = "company", description = "the company API")
 public interface CompanyApi {
 
-    @ApiOperation(value = "Get a company by its ID", nickname = "companyCompanyIDGet", notes = "Numeric ID of Driver", response = API.class, tags={  })
+    @ApiOperation(value = "Get a company by its ID", nickname = "companyCompanyIDGet", notes = "Numeric ID of Driver", response = Company.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "OK", response = API.class) })
+        @ApiResponse(code = 200, message = "OK", response = Company.class) })
     @RequestMapping(value = "/company/{companyID}",
         method = RequestMethod.GET)
-    ResponseEntity<API> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID);
+    ResponseEntity<Company> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID);
 
 
-    @ApiOperation(value = "say Hi", nickname = "companyGet", notes = "", response = API.class, tags={  })
+    @ApiOperation(value = "say Hi", nickname = "companyGet", notes = "", response = Companies.class, tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "get all the companies on successful execution", response = API.class) })
+        @ApiResponse(code = 200, message = "get all the companies on successful execution", response = Companies.class) })
     @RequestMapping(value = "/company",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<API> companyGet();
+    ResponseEntity<Companies> companyGet();
 
 }

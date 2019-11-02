@@ -1,7 +1,7 @@
 package io.swagger.model;
 
 import java.util.Objects;
-import io.swagger.model.Driver;
+import io.swagger.model.Company;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.validation.annotation.Validated;
@@ -9,12 +9,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Drivers
+ * Companies
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:12:24.446-05:00")
 
-public class Drivers extends ArrayList<Driver>  {
+public class Companies extends ArrayList<Company>  {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -35,7 +35,7 @@ public class Drivers extends ArrayList<Driver>  {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Drivers {\n");
+    sb.append("class Companies {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();

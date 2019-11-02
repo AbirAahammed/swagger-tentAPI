@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * Driver
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T11:47:34.041-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:12:24.446-05:00")
 
 public class Driver   {
   @JsonProperty("driverID")

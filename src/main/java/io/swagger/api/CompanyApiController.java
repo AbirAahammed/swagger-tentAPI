@@ -1,6 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.API;
+import io.swagger.api.company.Company_PE;
+import io.swagger.model.Companies;
+import io.swagger.model.Company;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -20,7 +22,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T11:47:34.041-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:12:24.446-05:00")
 
 @Controller
 public class CompanyApiController implements CompanyApi {
@@ -37,32 +39,22 @@ public class CompanyApiController implements CompanyApi {
         this.request = request;
     }
 
-    public ResponseEntity<API> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID) {
+    public ResponseEntity<Company> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<API>(objectMapper.readValue("{  \"message\" : \"{}\"}", API.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<API>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+           return new ResponseEntity<>(Company_PE.getCompanyByID(companyID), HttpStatus.OK);
         }
 
-        return new ResponseEntity<API>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Company>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<API> companyGet() {
+    public ResponseEntity<Companies> companyGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<API>(objectMapper.readValue("{  \"message\" : \"{}\"}", API.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<API>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+            return new ResponseEntity<>(Company_PE.getAllCompanies(), HttpStatus.OK);
         }
 
-        return new ResponseEntity<API>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<Companies>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }
