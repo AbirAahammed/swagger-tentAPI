@@ -8,6 +8,19 @@ basePath: /tent
 schemes:
   - "https"
   - "http"
+securityDefinitions:
+  # X-API-Key: abcdef12345
+  APIKeyHeader:
+    type: apiKey
+    in: header
+    name: X-API-Key
+  # /path?api_key=abcdef12345
+  APIKeyQueryParam:
+    type: apiKey
+    in: query
+    name: api_key
+security:
+  - APIKeyHeader: []
 paths:
   /driver:
     get:

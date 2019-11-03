@@ -22,12 +22,14 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:30:43.620-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-03T01:43:53.014-06:00")
 
 @Api(value = "company", description = "the company API")
 public interface CompanyApi {
 
-    @ApiOperation(value = "Get a company by its ID", nickname = "companyCompanyIDGet", notes = "Numeric ID of Driver", response = Company.class, tags={  })
+    @ApiOperation(value = "Get a company by its ID", nickname = "companyCompanyIDGet", notes = "Numeric ID of Driver", response = Company.class, authorizations = {
+        @Authorization(value = "APIKeyHeader")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Company.class) })
     @RequestMapping(value = "/company/{companyID}",
@@ -36,7 +38,9 @@ public interface CompanyApi {
     ResponseEntity<Company> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID);
 
 
-    @ApiOperation(value = "say Hi", nickname = "companyGet", notes = "", response = Companies.class, tags={  })
+    @ApiOperation(value = "say Hi", nickname = "companyGet", notes = "", response = Companies.class, authorizations = {
+        @Authorization(value = "APIKeyHeader")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "get all the companies on successful execution", response = Companies.class) })
     @RequestMapping(value = "/company",

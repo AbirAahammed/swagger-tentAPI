@@ -22,12 +22,14 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T13:30:43.620-05:00")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-03T01:43:53.014-06:00")
 
 @Api(value = "driver", description = "the driver API")
 public interface DriverApi {
 
-    @ApiOperation(value = "Get a driver by ID", nickname = "driverDriverIDGet", notes = "Numeric ID of Driver", response = Driver.class, tags={  })
+    @ApiOperation(value = "Get a driver by ID", nickname = "driverDriverIDGet", notes = "Numeric ID of Driver", response = Driver.class, authorizations = {
+        @Authorization(value = "APIKeyHeader")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = Driver.class) })
     @RequestMapping(value = "/driver/{driverID}",
@@ -36,7 +38,9 @@ public interface DriverApi {
     ResponseEntity<Driver> driverDriverIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("driverID") Integer driverID);
 
 
-    @ApiOperation(value = "Get all the drivers", nickname = "driverGet", notes = "", response = Drivers.class, tags={  })
+    @ApiOperation(value = "Get all the drivers", nickname = "driverGet", notes = "", response = Drivers.class, authorizations = {
+        @Authorization(value = "APIKeyHeader")
+    }, tags={  })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "get all the drivers on successful execution", response = Drivers.class) })
     @RequestMapping(value = "/driver",
