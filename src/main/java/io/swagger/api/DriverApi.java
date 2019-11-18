@@ -9,20 +9,14 @@ import io.swagger.model.Driver;
 import io.swagger.model.Drivers;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
-import java.util.List;
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-03T01:43:53.014-06:00")
+
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-17T03:58:24.979-06:00")
 
 @Api(value = "driver", description = "the driver API")
 public interface DriverApi {
@@ -47,5 +41,16 @@ public interface DriverApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<Drivers> driverGet();
+
+
+    @ApiOperation(value = "Creates a new user.", nickname = "driverPost", notes = "", authorizations = {
+        @Authorization(value = "APIKeyHeader")
+    }, tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 201, message = "Created") })
+    @RequestMapping(value = "/driver",
+        consumes = { "application/json" },
+        method = RequestMethod.POST)
+    ResponseEntity<Integer> driverPost(@ApiParam(value = "The user to create."  )  @Valid @RequestBody Driver user);
 
 }
