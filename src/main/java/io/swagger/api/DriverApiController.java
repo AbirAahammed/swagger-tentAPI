@@ -12,16 +12,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.*;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
-import java.util.List;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T11:47:34.041-05:00")
 
 @Controller
@@ -50,12 +44,23 @@ public class DriverApiController implements DriverApi {
 
     public ResponseEntity<Drivers> driverGet() {
         String accept = request.getHeader("Accept");
+
         if (accept != null && accept.contains("application/json")) {
             return new ResponseEntity<Drivers>(Driver_PE.getAllDrivers(), HttpStatus.OK);
-
         }
 
         return new ResponseEntity<Drivers>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+    public ResponseEntity<Integer> driverPost(@ApiParam(value = "The user to create."  )  @Valid @RequestBody Driver user) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            return new ResponseEntity<Integer>(Driver_PE.createDriver(user), HttpStatus.OK);
+        }
+        return new ResponseEntity<Integer>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
 }
+
+
+

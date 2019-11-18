@@ -32,6 +32,20 @@ paths:
           description: get all the drivers on successful execution
           schema:
             $ref: "#/definitions/drivers"
+    post:
+      summary: Creates a new user.
+      consumes:
+        - application/json
+      parameters:
+        - in: body
+          name: user
+          description: The user to create.
+          schema:
+            $ref: '#/definitions/driver'
+
+      responses:
+        201:
+          description: Created
   /driver/{driverID}:
     get:
       summary: Get a driver by ID
