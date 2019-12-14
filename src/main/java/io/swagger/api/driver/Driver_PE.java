@@ -36,6 +36,7 @@ public class Driver_PE {
                 result.setLastName(rs.getString(3));
                 result.setMiddleName(rs.getString(4));
             }
+            connection.commit();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -62,6 +63,7 @@ public class Driver_PE {
                 driver.setMiddleName(rs.getString(4));
                 result.add(driver);
             }
+            connection.commit();
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -84,6 +86,7 @@ public class Driver_PE {
             connection = ConnectionManager.getConnection();
             stmt = connection.createStatement();
             return stmt.executeUpdate(sqlString);
+
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
