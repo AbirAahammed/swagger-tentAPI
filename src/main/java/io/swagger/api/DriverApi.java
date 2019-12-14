@@ -9,10 +9,7 @@ import io.swagger.model.Driver;
 import io.swagger.model.Drivers;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -46,6 +43,7 @@ public interface DriverApi {
     @ApiOperation(value = "Creates a new user.", nickname = "driverPost", notes = "", authorizations = {
         @Authorization(value = "APIKeyHeader")
     }, tags={  })
+    @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
     @ApiResponses(value = { 
         @ApiResponse(code = 201, message = "Created") })
     @RequestMapping(value = "/driver",

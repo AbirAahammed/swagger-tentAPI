@@ -30,6 +30,7 @@ public class Company_PE {
                 result.setCompanyID(rs.getInt(1));
                 result.setCompanyName(rs.getString(2));
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -52,6 +53,7 @@ public class Company_PE {
                 company.setCompanyName(rs.getString(2));
                 result.add(company);
             }
+            connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

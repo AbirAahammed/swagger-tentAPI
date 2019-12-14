@@ -3,6 +3,7 @@ package io.swagger.api.driver;
 import io.swagger.api.ConnectionManager;
 import io.swagger.model.Driver;
 import io.swagger.model.Drivers;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -50,6 +51,7 @@ public class Driver_PE {
         try {
             connection = ConnectionManager.getConnection();
             stmt = connection.createStatement();
+
             rs = stmt.executeQuery(SELECT_ALL_DRIVERS);
             result = new Drivers();
             while (rs.next()) {
@@ -82,6 +84,7 @@ public class Driver_PE {
             connection = ConnectionManager.getConnection();
             stmt = connection.createStatement();
             return stmt.executeUpdate(sqlString);
+
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
