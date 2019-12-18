@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
 import java.util.Calendar;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-11-02T11:47:34.041-05:00")
@@ -60,10 +61,16 @@ public class DriverApiController implements DriverApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             logger.info("A new driver created at "+ Calendar.getInstance().getTime());
-            return new ResponseEntity<Integer>(Driver_PE.createDriver(user), HttpStatus.OK);
+            try {
+                return new ResponseEntity<Integer>(Driver_PE.createDriver(user), HttpStatus.OK);
+            } catch (SQLException e) {
+                logger.info("Driver creation failed");
+                return new ResponseEntity<Integer>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
-        logger.info("Driver creation failed at "+ Calendar.getInstance().getTime());
-        return new ResponseEntity<Integer>(HttpStatus.INTERNAL_SERVER_ERROR);
+        logger.info("Driver creation failed due to a bad request.");
+
+        return new ResponseEntity<Integer>(HttpStatus.BAD_REQUEST);
     }
 
 }
