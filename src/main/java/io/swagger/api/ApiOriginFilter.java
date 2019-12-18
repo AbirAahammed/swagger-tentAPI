@@ -1,8 +1,10 @@
 package io.swagger.api;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.Calendar;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletResponse;
