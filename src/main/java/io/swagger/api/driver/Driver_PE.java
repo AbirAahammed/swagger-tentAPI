@@ -69,7 +69,7 @@ public class Driver_PE {
         return result;
     }
 
-    public static Integer createDriver(Driver driver) {
+    public static Integer createDriver(Driver driver) throws SQLException {
         String firstName = driver.getFirstName();
         String middleName = driver.getMiddleName();
         String lastName = driver.getLastName();
@@ -83,8 +83,9 @@ public class Driver_PE {
         try {
             connection = ConnectionManager.getConnection();
             stmt = connection.createStatement();
-            return stmt.executeUpdate(sqlString);
-
+            int res = stmt.executeUpdate(sqlString);
+            connection.close();
+            return res;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;

@@ -5,6 +5,7 @@ import io.swagger.model.Companies;
 import io.swagger.model.Company;
 import io.swagger.model.Driver;
 import io.swagger.model.Drivers;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,7 +15,6 @@ import java.sql.Statement;
 public class Company_PE {
     private static final String SELECT_ALL_DRIVERS = "SELECT * FROM TARIF_ENT.COMPANY";
     private static String SELECT_DRIVER_BY_ID = "SELECT * FROM TARIF_ENT.COMPANY WHERE companyID = %d";
-
     public static Company getCompanyByID(Integer driverID) {
         Company result = null;
         String query = String.format(SELECT_DRIVER_BY_ID, driverID);
