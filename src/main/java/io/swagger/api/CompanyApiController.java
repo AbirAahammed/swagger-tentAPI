@@ -35,10 +35,10 @@ public class CompanyApiController implements CompanyApi {
     public ResponseEntity<Company> companyCompanyIDGet(@ApiParam(value = "Numeric ID of the user to get",required=true) @PathVariable("companyID") Integer companyID) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            logger.info("Company retrieved by ID at "+ Calendar.getInstance().getTime());
+            logger.info("Company retrieved by ID");
             return new ResponseEntity<>(Company_PE.getCompanyByID(companyID), HttpStatus.OK);
         }
-        logger.info("Failed to retrieve Company by ID at "+ Calendar.getInstance().getTime());
+        logger.info("Failed to retrieve Company by ID");
 
         return new ResponseEntity<Company>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -46,10 +46,10 @@ public class CompanyApiController implements CompanyApi {
     public ResponseEntity<Companies> companyGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            logger.info("Companies retrieved at "+ Calendar.getInstance().getTime());
+            logger.info("Companies retrieved at ");
             return new ResponseEntity<>(Company_PE.getAllCompanies(), HttpStatus.OK);
         }
-        logger.info("Failed to retrieve Companies at "+ Calendar.getInstance().getTime());
+        logger.info("Failed to retrieve Companies");
         return new ResponseEntity<Companies>(HttpStatus.NOT_IMPLEMENTED);
     }
 

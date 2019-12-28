@@ -40,7 +40,7 @@ public class DriverApiController implements DriverApi {
             logger.info("Driver retrieved by ID at "+ Calendar.getInstance().getTime());
             return new ResponseEntity<Driver>(Driver_PE.getDriverByID(driverID), HttpStatus.OK);
         }
-        logger.info("Failed to retrieve driver by ID at "+ Calendar.getInstance().getTime());
+        logger.info("Failed to retrieve driver by ID");
 
         return new ResponseEntity<Driver>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -52,7 +52,7 @@ public class DriverApiController implements DriverApi {
             logger.info("Drivers retrieved at "+ Calendar.getInstance().getTime());
             return new ResponseEntity<Drivers>(Driver_PE.getAllDrivers(), HttpStatus.OK);
         }
-        logger.info("Failed to retrieve drivers at "+ Calendar.getInstance().getTime());
+        logger.info("Failed to retrieve drivers");
 
         return new ResponseEntity<Drivers>(HttpStatus.NOT_IMPLEMENTED);
     }
@@ -60,7 +60,7 @@ public class DriverApiController implements DriverApi {
     public ResponseEntity<Integer> driverPost(@ApiParam(value = "The user to create."  )  @Valid @RequestBody Driver user) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
-            logger.info("A new driver created at "+ Calendar.getInstance().getTime());
+            logger.info("A new driver created");
             try {
                 return new ResponseEntity<Integer>(Driver_PE.createDriver(user), HttpStatus.OK);
             } catch (SQLException e) {
